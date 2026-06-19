@@ -3,282 +3,399 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anusha M Patel - Portfolio Resume</title>
+    <title>Anusha M Patel | Creative Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* Modern CSS Reset */
+        /* CSS reset and variables */
+        :root {
+            --bg: #050505;
+            --surface: #111111;
+            --surface-hover: #161616;
+            --text-main: #f3f3f3;
+            --text-muted: #888888;
+            --accent: #E2FF32; /* Neon yellow */
+            --accent-purple: #B28DFF; /* Soft purple */
+            --border: rgba(255, 255, 255, 0.06);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            cursor: none; /* We will use a custom cursor */
         }
 
         body {
-            background-color: #0f172a;
-            color: #e2e8f0;
-            line-height: 1.6;
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 2rem;
-            /* Dynamic animated gradient background */
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(17, 24, 39, 1) 0, transparent 50%), 
-                radial-gradient(at 50% 0%, rgba(30, 27, 75, 1) 0, transparent 50%), 
-                radial-gradient(at 100% 0%, rgba(76, 29, 149, 0.4) 0, transparent 50%);
-            background-attachment: fixed;
+            padding: 4vw;
+            /* Subtle noise texture */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+            overflow-x: hidden;
         }
 
-        .resume-container {
-            background: rgba(30, 41, 59, 0.6);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
-            padding: 3.5rem;
-            max-width: 850px;
+        /* Custom Cursor styling */
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, background 0.2s;
+        }
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(226, 255, 50, 0.5);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 998;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Bento Grid Layout */
+        .container {
+            max-width: 1200px;
             width: 100%;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 
-                        inset 0 1px 1px rgba(255, 255, 255, 0.1);
-            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            margin: 0 auto;
         }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 3.5rem;
-            position: relative;
-        }
-
-        header::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, #ec4899, #8b5cf6, #3b82f6);
-            margin: 1.5rem auto 0;
-            border-radius: 4px;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            background: linear-gradient(to right, #ffffff, #a5b4fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-            letter-spacing: -1px;
-        }
-
-        .subtitle {
-            font-size: 1.25rem;
-            color: #94a3b8;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-        }
-
-        .section {
-            margin-bottom: 2.5rem;
-            background: rgba(15, 23, 42, 0.4);
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            transition: all 0.3s ease;
-        }
-
-        .section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.4);
-            border-color: rgba(139, 92, 246, 0.3);
-            background: rgba(15, 23, 42, 0.6);
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            color: #f1f5f9;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        h2 svg {
-            width: 24px;
-            height: 24px;
-            color: #ec4899;
-        }
-
-        .info-grid {
+        .bento-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(12, 1fr);
+            grid-auto-rows: minmax(120px, auto);
+            gap: 1.5rem;
+            animation: enterAnim 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .info-item {
+        @keyframes enterAnim {
+            from { opacity: 0; transform: translateY(40px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .bento-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
         }
 
-        .info-label {
+        .bento-card:hover {
+            background: var(--surface-hover);
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Individual Grid Cells */
+        
+        /* 1. Hero Profile Card */
+        .card-intro {
+            grid-column: span 8;
+            grid-row: span 3;
+            background: linear-gradient(145deg, #111 0%, #080808 100%);
+            justify-content: center;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            border: 1px solid var(--border);
             font-size: 0.85rem;
-            color: #94a3b8;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: auto;
+            color: var(--accent);
+            align-self: flex-start;
         }
 
-        .info-value {
-            font-size: 1.15rem;
-            color: #f8fafc;
-            font-weight: 500;
+        .card-intro h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(3rem, 5.5vw, 6rem);
+            font-weight: 800;
+            line-height: 0.9;
+            margin: 2rem 0 1rem 0;
+            letter-spacing: -0.04em;
+            background: linear-gradient(180deg, #FFFFFF 0%, #707070 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .highlight-text {
-            color: #10b981;
+        .card-intro p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 85%;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        /* 2. SGPA Highlight Card */
+        .card-gpa {
+            grid-column: span 4;
+            grid-row: span 2;
+            background: var(--accent);
+            color: #000;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: none;
+        }
+
+        .card-gpa:hover {
+            background: #f4ff70;
+            transform: translateY(-8px) rotate(2deg);
+        }
+
+        .card-gpa h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(4rem, 6vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -2px;
+        }
+
+        .card-gpa p {
             font-weight: 700;
-            font-size: 1.75rem;
-            text-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            opacity: 0.8;
         }
 
-        .achievement-card {
+        /* 3. College Info Card */
+        .card-college {
+            grid-column: span 4;
+            grid-row: span 1;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: #151515;
+            background-image: radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 70%);
+        }
+
+        .card-college h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        .card-college p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 0.25rem;
+        }
+
+        /* 4. Hackathon Feature Card */
+        .card-hackathon {
+            grid-column: span 12;
+            grid-row: span 3;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 0;
+            background: linear-gradient(to right, #0f0f0f, #151020);
+        }
+
+        .hackathon-content {
+            padding: 3.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Abstract Mechanical Blueprint Visual */
+        .hackathon-visual {
             position: relative;
-            background: linear-gradient(135deg, rgba(236, 72, 153, 0.08), rgba(139, 92, 246, 0.08));
-            border-left: 4px solid #ec4899;
-            padding: 1.75rem;
-            border-radius: 0 12px 12px 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><path d="M0 0 L60 60 M60 0 L0 60" stroke="rgba(255,255,255,0.02)" stroke-width="1"/></svg>') center/60px repeat;
+            border-left: 1px solid var(--border);
+            display: flex;
+            justify-content: center;
+            align-items: center;
             overflow: hidden;
         }
 
-        .achievement-card::before {
+        /* Morphing shape representing engineering/CAED */
+        .mechanical-shape {
+            width: 220px;
+            height: 220px;
+            border: 2px dashed var(--accent-purple);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: morph 10s linear infinite;
+            background: radial-gradient(circle at center, rgba(178,141,255,0.1) 0%, transparent 60%);
+            box-shadow: 0 0 50px rgba(178,141,255,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .mechanical-shape::after {
             content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
             width: 100px;
             height: 100px;
-            background: radial-gradient(circle, rgba(236,72,153,0.1) 0%, transparent 70%);
+            border: 1px solid rgba(255,255,255,0.2);
             border-radius: 50%;
-            transform: translate(30%, -30%);
+            animation: spin 6s linear infinite reverse;
         }
 
-        .achievement-title {
-            font-size: 1.25rem;
-            color: #f8fafc;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
+        @keyframes morph {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: rotate(0deg); }
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: rotate(360deg); } /* Keep shape continuous while rotating */
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        .hackathon-content h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2rem, 3vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #fff;
+            line-height: 1.1;
         }
 
-        .achievement-desc {
-            color: #cbd5e1;
+        .hackathon-content p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
             line-height: 1.7;
-            font-size: 1.05rem;
+            margin-bottom: 2rem;
         }
 
-        .badge-container {
-            margin-top: 1.25rem;
+        .hackathon-content strong {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .pill-wrap {
             display: flex;
-            gap: 0.5rem;
+            gap: 0.75rem;
             flex-wrap: wrap;
         }
 
-        .badge {
-            background: rgba(139, 92, 246, 0.15);
-            color: #d8b4fe;
-            padding: 0.35rem 0.85rem;
-            border-radius: 9999px;
+        .pill {
+            padding: 0.5rem 1.25rem;
+            border: 1px solid rgba(178,141,255,0.3);
+            border-radius: 100px;
             font-size: 0.85rem;
+            color: #e5d5ff;
+            background: rgba(178,141,255,0.05);
             font-weight: 500;
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            transition: all 0.2s ease;
         }
 
-        .badge:hover {
-            background: rgba(139, 92, 246, 0.25);
-            transform: scale(1.05);
+        /* Hover effects for custom cursor interaction */
+        .bento-card:hover ~ .cursor-dot, a:hover ~ .cursor-dot {
+            transform: translate(-50%, -50%) scale(1.5);
+            background: #fff;
+        }
+        .bento-card:hover ~ .cursor-outline, a:hover ~ .cursor-outline {
+            transform: translate(-50%, -50%) scale(1.5);
+            background: rgba(255,255,255,0.05);
+            border-color: transparent;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .resume-container {
-                padding: 2rem;
-            }
-            h1 {
-                font-size: 2.5rem;
-            }
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .card-intro { grid-column: span 12; }
+            .card-gpa { grid-column: span 6; }
+            .card-college { grid-column: span 6; }
+            .card-hackathon { grid-template-columns: 1fr; }
+            .hackathon-visual { min-height: 300px; border-left: none; border-top: 1px solid var(--border); }
+            .hackathon-content { padding: 2.5rem; }
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 1.5rem; }
+            .bento-grid { display: flex; flex-direction: column; }
+            .card-intro h1 { font-size: 3.5rem; margin-top: 1rem; }
+            .cursor-dot, .cursor-outline { display: none; } /* Disable custom cursor on mobile */
+            * { cursor: auto; }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="resume-container">
-        <header>
-            <h1>Anusha M Patel</h1>
-            <div class="subtitle">Computer Science & Engineering</div>
-        </header>
+    <!-- Custom Cursor Elements -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
 
-        <div class="section">
-            <h2>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14v7" />
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10v7a7 7 0 0014 0v-7" />
-                </svg>
-                Education Profile
-            </h2>
-            <div class="info-grid">
-                <div class="info-item">
-                    <span class="info-label">Institution</span>
-                    <span class="info-value">GSSS College</span>
+    <div class="container">
+        <div class="bento-grid">
+            
+            <!-- Hero Card -->
+            <div class="bento-card card-intro">
+                <span class="tag">Creative Portfolio</span>
+                <h1>Anusha <br>M Patel.</h1>
+                <p>Computer Science & Engineering student focused on creating elegant code, solving mechanical automation problems, and designing future-ready systems.</p>
+            </div>
+
+            <!-- SGPA Card -->
+            <div class="bento-card card-gpa">
+                <h2>8.35</h2>
+                <p>Current SGPA</p>
+            </div>
+
+            <!-- College Card -->
+            <div class="bento-card card-college">
+                <h3>GSSS College</h3>
+                <p>Mysore, India</p>
+            </div>
+
+            <!-- Hackathon Card -->
+            <div class="bento-card card-hackathon">
+                <div class="hackathon-content">
+                    <span class="tag" style="color: var(--accent-purple); border-color: rgba(178,141,255,0.3);">Award Winning</span>
+                    <h2>Hackathon Winner</h2>
+                    <p>Secured first place in a competitive Mechanical Hackathon during the 2nd Semester. Engineered an innovative <strong>Fruit Peeler</strong> project by conceptualizing and drafting the complete CAED model to highlight mechanical efficiency.</p>
+                    <div class="pill-wrap">
+                        <span class="pill">CAED Design</span>
+                        <span class="pill">Mechanical Automation</span>
+                        <span class="pill">Problem Solving</span>
+                    </div>
                 </div>
-                <div class="info-item">
-                    <span class="info-label">Location</span>
-                    <span class="info-value">Mysore</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Program</span>
-                    <span class="info-value">CSE</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Academic Standing</span>
-                    <span class="info-value highlight-text">8.35 SGPA</span>
+                <!-- Abstract Visual -->
+                <div class="hackathon-visual">
+                    <div class="mechanical-shape"></div>
                 </div>
             </div>
-        </div>
 
-        <div class="section">
-            <h2>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                </svg>
-                Notable Achievements
-            </h2>
-            <div class="achievement-card">
-                <div class="achievement-title">Hackathon Winner (2nd Semester)</div>
-                <div class="achievement-desc">
-                    Emerged victorious in a highly competitive <strong>Mechanical Hackathon</strong>. 
-                    Spearheaded the conceptualization and development of an innovative <strong>Fruit Peeler</strong> project. 
-                    Successfully crafted a comprehensive CAED (Computer-Aided Engineering Drawing) design to demonstrate mechanical efficiency and automation viability.
-                </div>
-                <div class="badge-container">
-                    <span class="badge">CAED Design</span>
-                    <span class="badge">Innovation</span>
-                    <span class="badge">Problem Solving</span>
-                    <span class="badge">Mechanical Automation</span>
-                </div>
-            </div>
         </div>
     </div>
 
+    <!-- Custom Cursor Script -->
+    <script>
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+
+        window.addEventListener('mousemove', function(e) {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            // Instant follow for dot
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            // Smooth follow for outline
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 400, fill: "forwards" });
+        });
+    </script>
 </body>
 </html>
