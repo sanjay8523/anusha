@@ -8,5 +8,6 @@ int main(){
     cout<<"The difference of a and b is: "<<a-b<<endl;
     cout<<"The product of a and b is: "<<a*b<<endl;
     cout<<"The quotient of a and b is: "<<a/b<<endl;
-    return 0;
+    cout<<"The remainder of a and b is: "<<a%b<<endl;
+    cout<<"The value of a raised to the power of b is: "<<pow(a,b)<<endl;
 }
