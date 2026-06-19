@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anusha M Patel - Portfolio Resume</title>
+    <style>
+        /* Modern CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            /* Dynamic animated gradient background */
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(17, 24, 39, 1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, rgba(30, 27, 75, 1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, rgba(76, 29, 149, 0.4) 0, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        .resume-container {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 3.5rem;
+            max-width: 850px;
+            width: 100%;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 
+                        inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #ec4899, #8b5cf6, #3b82f6);
+            margin: 1.5rem auto 0;
+            border-radius: 4px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #ffffff, #a5b4fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #94a3b8;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+            background: rgba(15, 23, 42, 0.4);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.4);
+            border-color: rgba(139, 92, 246, 0.3);
+            background: rgba(15, 23, 42, 0.6);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #f1f5f9;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        h2 svg {
+            width: 24px;
+            height: 24px;
+            color: #ec4899;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .info-label {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        .info-value {
+            font-size: 1.15rem;
+            color: #f8fafc;
+            font-weight: 500;
+        }
+
+        .highlight-text {
+            color: #10b981;
+            font-weight: 700;
+            font-size: 1.75rem;
+            text-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+        }
+
+        .achievement-card {
+            position: relative;
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.08), rgba(139, 92, 246, 0.08));
+            border-left: 4px solid #ec4899;
+            padding: 1.75rem;
+            border-radius: 0 12px 12px 0;
+            overflow: hidden;
+        }
+
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(236,72,153,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(30%, -30%);
+        }
+
+        .achievement-title {
+            font-size: 1.25rem;
+            color: #f8fafc;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .achievement-desc {
+            color: #cbd5e1;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .badge-container {
+            margin-top: 1.25rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(139, 92, 246, 0.15);
+            color: #d8b4fe;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .badge:hover {
+            background: rgba(139, 92, 246, 0.25);
+            transform: scale(1.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .resume-container {
+                padding: 2rem;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="resume-container">
+        <header>
+            <h1>Anusha M Patel</h1>
+            <div class="subtitle">Computer Science & Engineering</div>
+        </header>
+
+        <div class="section">
+            <h2>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14v7" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10v7a7 7 0 0014 0v-7" />
+                </svg>
+                Education Profile
+            </h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-label">Institution</span>
+                    <span class="info-value">GSSS College</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Location</span>
+                    <span class="info-value">Mysore</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Program</span>
+                    <span class="info-value">CSE</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Academic Standing</span>
+                    <span class="info-value highlight-text">8.35 SGPA</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+                Notable Achievements
+            </h2>
+            <div class="achievement-card">
+                <div class="achievement-title">Hackathon Winner (2nd Semester)</div>
+                <div class="achievement-desc">
+                    Emerged victorious in a highly competitive <strong>Mechanical Hackathon</strong>. 
+                    Spearheaded the conceptualization and development of an innovative <strong>Fruit Peeler</strong> project. 
+                    Successfully crafted a comprehensive CAED (Computer-Aided Engineering Drawing) design to demonstrate mechanical efficiency and automation viability.
+                </div>
+                <div class="badge-container">
+                    <span class="badge">CAED Design</span>
+                    <span class="badge">Innovation</span>
+                    <span class="badge">Problem Solving</span>
+                    <span class="badge">Mechanical Automation</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
